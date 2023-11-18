@@ -1,0 +1,1 @@
+export const KaridaBooksAPI = "http://localhost:8080/library/";
