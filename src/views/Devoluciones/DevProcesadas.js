@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import MasterPage from "../../components/MasterPage";
-import NavTabMenu from "../../components/NavTabMenu";
+import MasterPage from "../../components/Widgets/MasterPage";
+import NavTabMenu from "../../components/Widgets/NavTabMenu";
 import { Table, Form, Container, Button } from "react-bootstrap";
-import { baseUrlAPI } from "../../constants/constants";
-import { UserContext } from "../../models/UserContext";
+import { baseUrlAPI } from "../../components/constants/constants";
+import { UserContext } from "../../components/models/UserContext";
 
 export default function DevProcesadas() {
 

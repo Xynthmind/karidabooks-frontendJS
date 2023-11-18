@@ -1,6 +1,6 @@
 import React from "react";
-import MasterPage from "../components/MasterPage";
-import NavTabMenu from "../components/NavTabMenu";
+import MasterPage from "../components/Widgets/MasterPage";
+import NavTabMenu from "../components/Widgets/NavTabMenu";
 
 export default function BooksList() {
     return (

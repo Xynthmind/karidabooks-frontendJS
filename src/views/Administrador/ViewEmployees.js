@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Form, Button, Image, Spinner } from "react-bootstrap";
-import { colors } from "../../constants/constants";
+import { colors } from "../../components/constants/constants";
 
 //Importaciones de componentes
 import TabMenuEmp from "../../components/Admin/TabMenuEmpleados";

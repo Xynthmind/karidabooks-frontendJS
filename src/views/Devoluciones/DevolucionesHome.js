@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import MasterPage from "../../components/MasterPage";
-import NavTabMenu from "../../components/NavTabMenu";
+import MasterPage from "../../components/Widgets/MasterPage";
+import NavTabMenu from "../../components/Widgets/NavTabMenu";
 import { Link, useLocation } from "react-router-dom";
 import { Table, Form, Container, Button } from "react-bootstrap";
-import { UserContext } from "../../models/UserContext";
-import { baseUrlAPI } from "../../constants/constants";
+import { UserContext } from "../../components/models/UserContext";
+import { baseUrlAPI } from "../../components/constants/constants";
 
 export default function DevolucionesHome() {
 

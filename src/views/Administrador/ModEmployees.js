@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Button, Form, Image, Spinner } from "react-bootstrap";
 
-import { baseUrlAPI, colors, fontFamily } from "../../constants/constants";
+import { baseUrlAPI, colors, fontFamily } from "../../components/constants/constants";
 import { Link, useNavigate } from "react-router-dom";
 
 

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
-import { colors } from "../../constants/constants";
-import { UserContext } from "../../models/UserContext";
+import { colors } from "../constants/constants";
+import { UserContext } from "../models/UserContext";
 
 
 //Iconos

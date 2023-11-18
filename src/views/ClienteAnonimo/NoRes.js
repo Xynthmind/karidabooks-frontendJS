@@ -1,7 +1,7 @@
-import MasterPage from "../../components/MasterPage";
-import NavTabMenu from "../../components/NavTabMenu";
-import CardBooks from "../../components/Card";
-import BannerHome from "../../components/BannerHome";
+import MasterPage from "../../components/Widgets/MasterPage";
+import NavTabMenu from "../../components/Widgets/NavTabMenu";
+import CardBooks from "../../components/Widgets/Card";
+import BannerHome from "../../components/Widgets/BannerHome";
 
 
 

@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 
-import MasterPage from "../../components/MasterPage";
-import NavTabMenu from "../../components/NavTabMenu";
-import BannerHome from "../../components/BannerHome";
+import MasterPage from "../../components/Widgets/MasterPage";
+import NavTabMenu from "../../components/Widgets/NavTabMenu";
+import BannerHome from "../../components/Widgets/BannerHome";
 import { Button, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { UserContext } from "../../models/UserContext";
-import { baseUrlAPI } from "../../constants/constants";
+import { UserContext } from "../../components/models/UserContext";
+import { baseUrlAPI } from "../../components/constants/constants";
 
 export default function Cart() {
 
