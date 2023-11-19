@@ -18,6 +18,7 @@ export default function Home() {
         fetch(`${KaridaBooksAPI}books`)
             .then(response => response.json())
             .then((data) => {
+                console.log("DATA", data);
                 setBooks(data);
                 setLoading(false);
             })
