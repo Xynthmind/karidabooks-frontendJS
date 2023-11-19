@@ -13,7 +13,7 @@ export default function BannerHome() {
         autoplaySpeed: 3000,  // Establecer la duración de cada slide en milisegundos
     };
     return (
-        <div style={{ maxHeight: "40vh", overflow: "hidden" }}>
+        <div style={{ maxHeight: "20vh", overflow: "hidden" }}>
             <Slider {...settings}>
                 <div>
                     <img src="https://images.pexels.com/photos/1106468/pexels-photo-1106468.jpeg" alt="Banner Image 1" style={{ width: '100%' }} />

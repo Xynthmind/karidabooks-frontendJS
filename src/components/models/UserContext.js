@@ -15,8 +15,6 @@ export const UserProvider = ({ children }) => {
   const logout = () => {
     setUser(null);
   };
-
-
   //Modelo de carrito
   const [cart, setCart] = useState([]);
 

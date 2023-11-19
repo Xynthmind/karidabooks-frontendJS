@@ -2,20 +2,6 @@ import React, { useState } from "react";
 import { Image, } from "react-bootstrap";
 import Logo from "../../assets/karidabookslogo.png"
 export default function TopView({Busqueda}) {
-    
-    const [search, setSearch] = useState("");
-
-    const handleChange = (event)=>
-    {
-        const { name, value } = event.target;
-     setSearch(value)
-    }
-
-    const onSubmit= ()=>
-        {
-         Busqueda(search)
-        }
-
     return (
         <div style={{ width: "100%", height: "10vh", padding: 50, alignItems: "center", justifyContent: "space-between", display: "flex", 
         background: ' linear-gradient(180deg, rgba(64,58,76,1) 0%, rgba(77,72,97,1) 100%)'  }}>
