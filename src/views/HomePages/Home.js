@@ -8,21 +8,10 @@ import NavBarTop from "../../components/Widgets/NavBarTop";
 import BannerHome from "../../components/Widgets/BannerHome";
 import NavBarBot from "../../components/Widgets/NavBarBot";
 import CardBooks from "../../components/Widgets/Card";
-import Slider from "react-slick";
 export default function Home() {
     const navigate = useNavigate();
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(false);
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 1000,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,  // Establecer autoplay en true
-        autoplaySpeed: 3000,  // Establecer la duración de cada slide en milisegundos
-    };
-
     useEffect(() => {
         setLoading(true);
         //console.log('aki si entra');
