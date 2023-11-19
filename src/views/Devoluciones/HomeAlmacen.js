@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Button, Spinner } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { baseUrlAPI, colors } from "../../constants/constants";
+import { baseUrlAPI, colors } from "../../components/constants/constants";
 import TableBooks from "../../components/Inventario/TableBooks";
-import { UserContext } from "../../models/UserContext";
+import { UserContext } from "../../components/models/UserContext";
 import { AiOutlinePoweroff } from "react-icons/ai";
-import MasterPage from "../../components/MasterPage";
-import NavTabMenu from "../../components/NavTabMenu";
+import MasterPage from "../../components/Widgets/MasterPage";
+import NavTabMenu from "../../components/Widgets/NavTabMenu";
 
 export default function HomeAlmacen() {
 

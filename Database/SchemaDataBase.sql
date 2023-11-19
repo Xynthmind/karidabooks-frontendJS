@@ -1,195 +1,118 @@
-CREATE TABLE Libros (
-  id_libro INT(11) NOT NULL AUTO_INCREMENT,
-  titulo VARCHAR(255) NOT NULL,
-  autor VARCHAR(255) NOT NULL,
-  foto VARCHAR(255) NOT NULL,
-  editorial VARCHAR(255) NOT NULL,
-  descripcion TEXT,
-  precio DECIMAL(10,2) NOT NULL,
-  descuento INT(5) NOT NULL,
-  stock INT(11) NOT NULL,
-  PRIMARY KEY (id_libro)
+CREATE DATABASE KaridaBooks;
+USE KaridaBooks;
+
+CREATE TABLE Roles (
+  id_rol INT NOT NULL AUTO_INCREMENT,
+  rol_name VARCHAR(255) NOT NULL,
+  rol_number TINYINT NOT NULL,
+  status_c INT NOT NULL,
+  PRIMARY KEY (id_rol)
+);
+CREATE TABLE Users (
+  id_user INT NOT NULL AUTO_INCREMENT,
+  id_rol INT NOT NULL,
+  first_name VARCHAR(100) NOT NULL,
+  middle_name VARCHAR(100),
+  last_name VARCHAR(100) NOT NULL,
+  phone_number BIGINT,
+  email VARCHAR(100) NOT NULL,
+  password VARCHAR(20) NOT NULL,
+  status_c INT NOT NULL,
+  PRIMARY KEY (id_user),
+  FOREIGN KEY (id_rol) REFERENCES Roles(id_rol)
+);
+CREATE TABLE Cards (
+  id_card INT NOT NULL AUTO_INCREMENT,
+  id_user INT NOT NULL,
+  card_owner VARCHAR(100) NOT NULL,
+  card_number BIGINT NOT NULL,
+  expiry_date DATE NOT NULL,
+  cvv SMALLINT NOT NULL,
+  country VARCHAR(100) NOT NULL,
+  street VARCHAR(255) NOT NULL,  
+  zc VARCHAR(10) NOT NULL,
+  PRIMARY KEY (id_card),
+  FOREIGN KEY (id_user) REFERENCES Users(id_user)
+);
+CREATE TABLE Addresses (
+  id_address INT NOT NULL AUTO_INCREMENT,
+  id_user INT NOT NULL,
+  country VARCHAR(100) NOT NULL,
+  street VARCHAR(255) NOT NULL,
+  house_number VARCHAR(10),
+  zc VARCHAR(10) NOT NULL,
+  delivery_instructions VARCHAR(255),
+  PRIMARY KEY (id_address),
+  FOREIGN KEY (id_user) REFERENCES Users(id_user)
+);
+CREATE TABLE AsistRequests (
+  id_asistreq INT NOT NULL AUTO_INCREMENT,
+  id_user INT NOT NULL,
+  descript VARCHAR(255) NOT NULL,
+  req_type TINYINT NOT NULL,
+  att_date DATE,
+  att_time VARCHAR(50),
+  status_c INT NOT NULL,
+  PRIMARY KEY (id_asistreq),
+  FOREIGN KEY (id_user) REFERENCES Users(id_user)
 );
 
-CREATE TABLE Categorias (
-  id_categoria INT(11) NOT NULL AUTO_INCREMENT,
-  nombre VARCHAR(255) NOT NULL,
-  PRIMARY KEY (id_categoria)
+CREATE TABLE Parcels (
+  id_parcel INT NOT NULL AUTO_INCREMENT,
+  company_name VARCHAR(100) NOT NULL,
+  manager VARCHAR(100) NOT NULL,
+  address_p VARCHAR(255) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  status_c INT NOT NULL,
+  PRIMARY KEY (id_parcel)
+);
+CREATE TABLE Categories (
+  id_category INT NOT NULL AUTO_INCREMENT,
+  category_name VARCHAR(255) NOT NULL,
+  status_c INT NOT NULL,
+  PRIMARY KEY (id_category)
+);
+CREATE TABLE Books (
+  id_book INT NOT NULL AUTO_INCREMENT,
+  id_category INT NOT NULL,
+  title VARCHAR(100) NOT NULL,
+  author VARCHAR(100) NOT NULL,
+  photo VARCHAR(255) NOT NULL,
+  editorial VARCHAR(100) NOT NULL,
+  descrip VARCHAR(100) NOT NULL,
+  price DECIMAL(12,2) NOT NULL,
+  discount DECIMAL(12,2) NOT NULL,
+  stock INT NOT NULL,
+  status_c INT NOT NULL,
+  PRIMARY KEY (id_book),
+  FOREIGN KEY (id_category) REFERENCES Categories(id_category)
 );
 
-CREATE TABLE Libros_Categorias (
-  id_libro INT(11) NOT NULL,
-  id_categoria INT(11) NOT NULL,
-  PRIMARY KEY (id_libro, id_categoria),
-  FOREIGN KEY (id_libro) REFERENCES Libros(id_libro),
-  FOREIGN KEY (id_categoria) REFERENCES Categorias(id_categoria)
+CREATE TABLE Orders (
+  id_order INT NOT NULL AUTO_INCREMENT,
+  id_user INT NOT NULL,
+  id_card INT NOT NULL,
+  id_address INT NOT NULL,
+  id_parcel INT NOT NULL,
+  order_date DATE NOT NULL,
+  shipping_date DATE NOT NULL,
+  arrive_date DATE NOT NULL,
+  total DECIMAL(12,2) NOT NULL,
+  order_status VARCHAR(100) NOT NULL,
+  status_c INT NOT NULL,
+  PRIMARY KEY (id_order),
+  FOREIGN KEY (id_user) REFERENCES Users(id_user),
+  FOREIGN KEY (id_card) REFERENCES Cards(id_card),
+  FOREIGN KEY (id_address) REFERENCES Addresses(id_address),
+  FOREIGN KEY (id_parcel) REFERENCES Parcels(id_parcel)
 );
-
-CREATE TABLE Usuarios (
-  id_usuario INT(11) NOT NULL AUTO_INCREMENT,
-  rol VARCHAR(50) NOT NULL,
-  nombre VARCHAR(255) NOT NULL,
-  apellido_p VARCHAR(255) NOT NULL,
-  apellido_m VARCHAR(255) NOT NULL,
-  email VARCHAR(255) NOT NULL,
-  contrasena VARCHAR(255) NOT NULL,
-  PRIMARY KEY (id_usuario)
-);
-
-CREATE TABLE Pedidos (
-  id_pedido INT(11) NOT NULL AUTO_INCREMENT,
-  id_usuario INT(11) NOT NULL,
-  fecha DATE NOT NULL,
-  total DECIMAL(10,2) NOT NULL,
-  PRIMARY KEY (id_pedido),
-  FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario)
-);
-
-
-CREATE TABLE Paqueterias (
-  id_paqueteria INT(11) NOT NULL AUTO_INCREMENT,
-  nombre VARCHAR(50) NOT NULL,
-  encargado VARCHAR(50) NOT NULL,
-  direccion VARCHAR(100) NOT NULL,
-  PRIMARY KEY (id_paqueteria)
-);
-
-CREATE TABLE Detalles_Pedidos (
-  id_detalle INT(11) NOT NULL AUTO_INCREMENT,
-  id_pedido INT(11) NOT NULL,
-  id_libro INT(11) NOT NULL,
-  id_paqueteria INT(11) NOT NULL,
-  cantidad INT(11) NOT NULL,
-  precio_unitario DECIMAL(10,2) NOT NULL,
-  fecha_envio DATE NOT NULL,
-  fecha_entrega DATE NOT NULL,
-  estatus INT(1) NOT NULL,
-  PRIMARY KEY (id_detalle),
-  FOREIGN KEY (id_pedido) REFERENCES Pedidos(id_pedido),
-  FOREIGN KEY (id_libro) REFERENCES Libros(id_libro),
-  FOREIGN KEY (id_paqueteria) REFERENCES Paqueterias(id_paqueteria)
-);
-
-
-//------------------- Después de hacer la base -----------------------
-CREATE TABLE Empleados (
-  id_empleado INT(11) NOT NULL AUTO_INCREMENT,
-  rol VARCHAR(50) NOT NULL,
-  nombre VARCHAR(50) NOT NULL,
-  apellido_p VARCHAR(50) NOT NULL,
-  apellido_m VARCHAR(50) NOT NULL,
-  email VARCHAR(80) NOT NULL,
-  contrasena VARCHAR(150) NOT NULL,
-  telefono INT(18) NOT NULL,
-  PRIMARY KEY (id_empleado)
-);
-
-
-CREATE TABLE Clientes (
-  id_cliente INT(11) NOT NULL AUTO_INCREMENT,
-  nombre VARCHAR(50) NOT NULL,
-  apellido_p VARCHAR(50) NOT NULL,
-  apellido_m VARCHAR(50) NOT NULL,
-  email VARCHAR(80) NOT NULL,
-  contrasena VARCHAR(150) NOT NULL,
-  telefono INT(18) NOT NULL,
-  PRIMARY KEY (id_cliente)
-);
-
-CREATE TABLE SolicitudCorreos (
-  id_correo INT(11) NOT NULL AUTO_INCREMENT,
-  id_cliente INT(11) NOT NULL,
-  nombreClient VARCHAR(50) NOT NULL,
-  correo VARCHAR(50) NOT NULL,
-  horario INT(11) NOT NULL,
-  descripcion VARCHAR(250) NOT NULL,
-  activo INT(1) NOT NULL,
-  PRIMARY KEY (id_correo),
-  FOREIGN KEY (id_cliente) REFERENCES Usuarios(id_usuario)
-);
-CREATE TABLE CorreosAtendidos (
-  id_correoatend INT(11) NOT NULL AUTO_INCREMENT,
-  id_correo INT(11) NOT NULL,
-  dateAt DATE NOT NULL,
-  PRIMARY KEY (id_correoatend),
-  FOREIGN KEY (id_correo) REFERENCES SolicitudCorreos(id_correo)
-);
-CREATE TABLE SolicitudLlamadas (
-  id_llamada INT(11) NOT NULL AUTO_INCREMENT,
-  id_cliente INT(11) NOT NULL,
-  nombreClient VARCHAR(50) NOT NULL,
-  telefono INT(18) NOT NULL,
-  horario INT(11) NOT NULL,
-  descripcion VARCHAR(250) NOT NULL,
-  activo INT(1) NOT NULL,
-  PRIMARY KEY (id_llamada),
-  FOREIGN KEY (id_cliente) REFERENCES Usuarios(id_usuario)
-);
-CREATE TABLE LlamadasAtendidas (
-  id_llamadaatend INT(11) NOT NULL AUTO_INCREMENT,
-  id_llamada INT(11) NOT NULL,
-  dateAt DATE NOT NULL,
-  PRIMARY KEY (id_llamadaatend),
-  FOREIGN KEY (id_llamada) REFERENCES SolicitudLlamadas(id_llamada)
-);
-CREATE TABLE Productos (
-  id_producto INT(11) NOT NULL AUTO_INCREMENT,
-  titulo VARCHAR(50) NOT NULL,
-  autor VARCHAR(50) NOT NULL,
-  precio INT(11) NOT NULL,
-  foto VARCHAR(50) NOT NULL,
-  sinopsis VARCHAR(150) NOT NULL,
-  activo INT(1) NOT NULL,
-  PRIMARY KEY (id_producto)
-);
-
-//------------------- Después de hacer la base devoluciones -----------------------
-CREATE TABLE Devoluciones (
-  id_devolucion INT(11) NOT NULL AUTO_INCREMENT,
-  id_libro INT(11) NOT NULL ,
-  id_usuario INT(11) NOT NULL,
-  precio INT(11) NOT NULL,
-  num_guia VARCHAR(50) NOT NULL,
-  fecha_envio VARCHAR(50) NOT NULL,
-  fecha_atencion VARCHAR(50) NOT NULL,
-  fecha_recibido VARCHAR(50) NOT NULL,
-  motivo_dev VARCHAR(50) NOT NULL,
-  metodo_dev VARCHAR(50) NOT NULL,
-  estatus_dev VARCHAR(50) NOT NULL,
-  PRIMARY KEY (id_devolucion)
-  FOREIGN KEY (id_libro) REFERENCES Libros(id_libro)
-  FOREIGN KEY (id_usuario) REFERENCES Clientes(id_usuario)
-);
-------------- Kevin (Usuario Anonimo) ---------------
-CREATE TABLE Pedidos (
-  id_pedido INT(11) NOT NULL AUTO_INCREMENT,
-  id_usuario INT(11) NOT NULL,
-  fecha DATE NOT NULL,
-  direccion VARCHAR(50) NOT NULL,
-  estatus VARCHAR(50) NOT NULL,
-  total DECIMAL(10,2) NOT NULL,
-  PRIMARY KEY (id_pedido),
-  FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario)
-);
-
-CREATE TABLE Detalles_Pedidos (
-  id_detalle INT(11) NOT NULL AUTO_INCREMENT,
-  id_pedido INT(11) NOT NULL,
-  id_libro INT(11) NOT NULL,
-  cantidad INT(11) NOT NULL,
-  precio DECIMAL(10,2) NOT NULL,
-  PRIMARY KEY (id_detalle),
-  FOREIGN KEY (id_pedido) REFERENCES Pedidos(id_pedido),
-  FOREIGN KEY (id_libro) REFERENCES Libros(id_libro)
-);
-
-CREATE TABLE Metodos_pago (
-  id_metodo_pago INT(11) NOT NULL AUTO_INCREMENT,
-  id_usuario INT(11) NOT NULL,
-  tarjeta INT(11) NOT NULL,
-  fecha_expiracion INT(11) NOT NULL,
-  cvv INT(3) NOT NULL,
-  titular INT(11) NOT NULL,
-  PRIMARY KEY (id_metodo_pago),
-  FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario)
+CREATE TABLE OrdersDetails (
+  id_order_details INT NOT NULL AUTO_INCREMENT,
+  id_order INT NOT NULL,
+  id_book INT NOT NULL,
+  amount DECIMAL(12,2) NOT NULL,
+  total_objects INT NOT NULL,
+  PRIMARY KEY (id_order_details),
+  FOREIGN KEY (id_order) REFERENCES Orders(id_order),
+  FOREIGN KEY (id_book) REFERENCES Books(id_book)
 );

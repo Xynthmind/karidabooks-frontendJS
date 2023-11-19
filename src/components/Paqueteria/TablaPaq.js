@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Table } from "react-bootstrap";
 import { Navigate } from "react-router";
 import { Link } from "react-router-dom";
-import { colors } from "../../constants/constants";
+import { colors } from "../constants/constants";
 
 export default function TablaPaq(props) {
 

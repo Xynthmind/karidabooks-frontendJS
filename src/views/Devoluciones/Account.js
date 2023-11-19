@@ -1,6 +1,6 @@
 import React from "react";
-import NavTabMenu from "../../components/NavTabMenu";
-import MasterPage from "../../components/MasterPage";
+import NavTabMenu from "../../components/Widgets/NavTabMenu";
+import MasterPage from "../../components/Widgets/MasterPage";
 import { Link, useLocation } from "react-router-dom";
 import { Button, Image } from "react-bootstrap";
 

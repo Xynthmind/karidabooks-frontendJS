@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { colors } from "../../constants/constants";
+import { colors } from "../constants/constants";
 
 
 //Iconos

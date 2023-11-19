@@ -3,13 +3,13 @@ import React, { useContext, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 //Importación de componentes
-import MasterPage from "../../components/MasterPage";
-import NavTabMenu from "../../components/NavTabMenu";
+import MasterPage from "../../components/Widgets/MasterPage";
+import NavTabMenu from "../../components/Widgets/NavTabMenu";
 import { Button, Image, Toast, ToastContainer } from "react-bootstrap";
-import { colors, fontFamily } from "../../constants/constants";
+import { colors, fontFamily } from "../../components/constants/constants";
 import { BsCartPlus } from "react-icons/bs";
-import BannerHome from "../../components/BannerHome";
-import { UserContext } from "../../models/UserContext";
+import BannerHome from "../../components/Widgets/BannerHome";
+import { UserContext } from "../../components/models/UserContext";
 
 
 export default function Book() {
