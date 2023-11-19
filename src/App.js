@@ -7,13 +7,6 @@ import Home from './views/HomePages/Home';
 import Login from './views/HomePages/Login';
 import Register from './views/HomePages/Register';
 
-
-
-
-
-
-
-
 function App() {
   return (
     <UserProvider>
@@ -27,8 +20,4 @@ function App() {
     </UserProvider>
   );
 }
-
-
-
-
 export default App;
