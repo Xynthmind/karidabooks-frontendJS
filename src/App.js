@@ -6,7 +6,7 @@ import { UserProvider } from './components/models/UserContext';
 import Home from './views/HomePages/Home';
 import Login from './views/HomePages/Login';
 import Register from './views/HomePages/Register';
-
+import BookPerCategory from './views/Books/BookPerCategory';
 function App() {
   return (
     <UserProvider>
@@ -15,6 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/books/categoryclass" element={<BookPerCategory />} />
         </Routes>
       </Router>
     </UserProvider>
