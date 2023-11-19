@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../models/UserContext";
 import { KaridaBooksAPI } from "../../components/constants/API";
@@ -13,16 +13,14 @@ export default function NavBarBot() {
     const [categories, setCategories] = useState([]);
     useEffect(() => {
         fetch(`${KaridaBooksAPI}categories`)
-          .then(response => response.json())
-          .then(data => {
-            console.log("DATA", data)
-            setCategories(data);
-          })
-          .catch(error => {
-            console.error(error);
-          });
-      }, []);
-
+            .then(response => response.json())
+            .then(data => {
+                setCategories(data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }, []);
     return (
         <div style={{ width: "100%", height: "5vh", backgroundColor: "#4d4861", alignItems: "center", justifyContent: "space-between", display: "flex", padding: 20 }}>
             <Dropdown>
@@ -33,8 +31,13 @@ export default function NavBarBot() {
                 <Dropdown.Menu>
                     {categories.map((category) => {
                         return (
-                            <Dropdown.Item key={category.category_name} style={{ backgroundColor: colors.white }}>{category.category_name}</Dropdown.Item>
-                        )
+                            <div key={category.category_name}>                              
+                                    <Dropdown.Item  style={{ backgroundColor: colors.white }}>{category.category_name}</Dropdown.Item>
+                                <Link to={"/books/categoryclass"} state={{ category: category }}>
+                                    <Button>See all books</Button>
+                                </Link>
+                            </div>
+                        );
                     })}
                 </Dropdown.Menu>
             </Dropdown>
