@@ -5,8 +5,6 @@ import { KaridaBooksAPI } from "../constants/API";
 import { Button, Form  } from "react-bootstrap";
 import { colors } from "../constants/ColorsOfCompany";
 
-import { baseUrlAPI } from "../../components/constants/constants";
-
 //Iconos
 import { BsFillHouseFill, BsFilePerson } from "react-icons/bs"
 
@@ -26,12 +24,12 @@ export default function NavBarTop() {
         if (search !== "") {
             let tempData = books.filter((item) => {
                 return (
-                    item.titulo.toLowerCase().indexOf(search.toLowerCase()) > -1 || item.autor.toLowerCase().indexOf(search.toLowerCase()) > -1
+                    item.title.toLowerCase().indexOf(search.toLowerCase()) > -1 || item.author.toLowerCase().indexOf(search.toLowerCase()) > -1
                 );
             });
             setBooks(tempData);
         } else {
-            fetch(`${baseUrlAPI}libros`)
+            fetch(`${KaridaBooksAPI}books`)
                 .then((response) => response.json())
                 .then((data) => {
                     setBooks(data);
@@ -92,7 +90,6 @@ export default function NavBarTop() {
                     </>
                 )
                 }
-
             </div >
         </div >
     )
