@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
 import { Button, Form, Image, Spinner } from "react-bootstrap";
-
-import { KaridaBooksAPI, colors, fontFamily } from "../../components/constants/constants";
-import fondo from "../../assets/background1.jpg";
+import { KaridaBooksAPI } from "../../components/constants/API";
+import { colors, fontFamily } from "../../components/constants/ColorsOfCompany";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../components/models/UserContext";
-
+import BackgroundImageLg from "../../assets/modenLibr.jpg";
+import LogoN from "../../assets/karidabookslogoNegative.png"
 export default function Login() {
     const { login } = useContext(UserContext);
     const navigate = useNavigate();
@@ -28,15 +28,15 @@ export default function Login() {
             setShowErrorMesagge2(false);
             setLoading(true);
             fetch(`${KaridaBooksAPI}users/${dataUser.email}/${dataUser.password}`)
-                .then(response => response.json())
+            .then(response => response.json()) 
                 .then(data => {
-                    if (data.length > 0) {
-                        login(data[0]);
-                        //routing(data[0].rol)
+                    if (data) {
+                        console.log("entro");
+                        login(data);
+                        routing(data.id_rol)
                         setLoading(false);
                         setDataUser({ email: "", password: ""});
-                        localStorage.setItem("user", JSON.stringify(data[0]));
-                        //console.log("hola");
+                        localStorage.setItem("user", JSON.stringify(data));
                     } else {
                         setShowErrorMesagge(true);
                         setLoading(false);
@@ -75,12 +75,13 @@ export default function Login() {
     const handleChange = (event) => {
         const { name, value } = event.target;
         setDataUser({ ...dataUser, [name]: value })
+        console.log(value);
     }
 
     return (
-        <div style={{ textAlign: "center", display: "flex", alignItems: "center", height: "100vh", justifyContent: "center", backgroundImage: `url(${fondo})`, backgroundSize: "cover" }}>
-            <div style={{ width: "50%", height: "60vh", backgroundColor: colors.white, borderRadius: 20, alignItems: "center", justifyContent: "center", display: "flex" }}>
-                <Image style={{ width: "20%", marginRight: 80 }} src="https://imgs.search.brave.com/ubuMxJsB94CNuWODv8lg-4lkoBvkm2xZos4nK7kKKkg/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly93d3cu/bG9nb2x5bnguY29t/L2ltYWdlcy9sb2dv/bHlueC8wOS8wOTZk/ZWM1NTI1NTUxYTEw/NjAzZDIzMmRiNWMx/NjY1MS5wbmc"></Image>
+        <div style={{ textAlign: "center", display: "flex", alignItems: "center", height: "100vh", justifyContent: "center", backgroundImage: `url(${BackgroundImageLg})`, backgroundSize: "cover" }}>
+            <div style={{ width: "40%", height: "50vh", backgroundColor: colors.white, borderRadius: 20, alignItems: "center", justifyContent: "center", display: "flex" }}>
+                <Image style={{ width: "40%", marginRight: 80 }} src={LogoN}></Image>
                 <div style={{ color: colors.terceary }}>
                     <h4 style={{ fontFamily: fontFamily.primary }}>Welcome to Karida Books!</h4>
                     <Form style={{ marginTop: 30 }} onSubmit={handleLogin}>
