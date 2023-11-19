@@ -3,17 +3,25 @@ import { Spinner } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { KaridaBooksAPI } from "../../components/constants/API";
 
-//Importaciones de componentes
 import TopView from "../../components/Widgets/TopView";
 import NavBarTop from "../../components/Widgets/NavBarTop";
 import BannerHome from "../../components/Widgets/BannerHome";
 import NavBarBot from "../../components/Widgets/NavBarBot";
 import CardBooks from "../../components/Widgets/Card";
-
+import Slider from "react-slick";
 export default function Home() {
     const navigate = useNavigate();
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(false);
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 1000,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,  // Establecer autoplay en true
+        autoplaySpeed: 3000,  // Establecer la duración de cada slide en milisegundos
+    };
 
     useEffect(() => {
         setLoading(true);
@@ -26,6 +34,7 @@ export default function Home() {
             })
             .catch((e) => {
                 console.log(e);
+                alert("An unexpected error has occurred. We apologize for the inconvenience.");
                 setLoading(false);
             })
     }, []);
@@ -35,17 +44,16 @@ export default function Home() {
             <NavBarTop />  
             <BannerHome />
             <NavBarBot />
-            <div style={{ backgroundColor: "#ebebeb", height: "40vh" }}>
+            <div style={{ backgroundColor: "#ebebeb", height: "100vh" }}>
                 <div style={{ marginLeft: 40, marginRight: 40 }}>
-                    <div style={{ display: "flex", alignItems: "center" }}>
-                        <h2 style={{ marginRight: 20 }}>Books</h2>
-                        <div style={{ cursor: "pointer" }} onClick={() => { navigate("/books") }}>...</div>
+                    <div style={{ display: "flex", alignItems: "center", marginLeft: "43%" }}>
+                        <h1>Our best sellers...</h1>
                     </div>
                     {loading && <div style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}><Spinner animation="grow" variant="warning" /></div>}
-                    <div style={{ width: "100%", backgroundColor: "#ebebeb", alignItems: "center", justifyContent: "space-around", display: "flex", padding: 20 }}>
-                        {books.slice(0, 6).map((book) => {
-                            return (
-                                <CardBooks key={book.title} data={book}></CardBooks>
+                    <div style={{ width: "100%", height: "100%",backgroundColor: "#ebebeb", alignItems: "center", justifyContent: "space-around", padding: 20, display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "20px" }}>
+                        {books.slice(0, 10).map((book) => {
+                            return (                                                    
+                                    <CardBooks key={book.title} data={book}></CardBooks>
                             )
                         })}
                     </div>
