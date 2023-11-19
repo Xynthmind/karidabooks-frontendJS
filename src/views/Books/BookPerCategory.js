@@ -7,6 +7,7 @@ import TopView from "../../components/Widgets/TopView";
 import NavBarTop from "../../components/Widgets/NavBarTop";
 import BannerHome from "../../components/Widgets/BannerHome";
 import NavBarBotCat from "../../components/Widgets/NavBarBotCat";
+import NavBarBot from "../../components/Widgets/NavBarBot";
 import CardBooks from "../../components/Widgets/Card";
 
 export default function BookPerCategory() {
@@ -15,7 +16,10 @@ export default function BookPerCategory() {
     const [loading, setLoading] = useState(false);
     const location = useLocation();
     const category = location.state.category;
-    
+    const [eject, setTimes] = useState(0);
+    const reloadFetch = () => {
+        setTimes(eject + 1);
+      };
     useEffect(() => {
         setLoading(true);
         fetch(`${KaridaBooksAPI}books/cat/${category.id_category}`)
@@ -29,13 +33,13 @@ export default function BookPerCategory() {
                 alert("An unexpected error has occurred. We apologize for the inconvenience.");
                 setLoading(false);
             })
-    }, []);
+    });
     return (
         <>
             <TopView />
             <NavBarTop />  
             <BannerHome />
-            <NavBarBotCat />
+            <NavBarBot />
             <div style={{ backgroundColor: "#ebebeb", height: "100vh" }}>
                 <div style={{ marginLeft: 40, marginRight: 40 }}>
                     <div style={{ display: "flex", alignItems: "center", marginLeft: "43%" }}>
