@@ -1,13 +1,17 @@
 import React, { useContext, useState } from "react";
-import { Button, Form, FloatingLabel } from "react-bootstrap";
+import { Button, Form, FloatingLabel, Image } from "react-bootstrap";
+import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
+
 import { KaridaBooksAPI } from "../../components/constants/API";
 import { colors, fontFamily } from "../../components/constants/ColorsOfCompany";
 import BackgroundImageLg from "../../assets/modenLibr.jpg";
 import { UserContext } from "../../components/models/UserContext";
-import { useNavigate } from "react-router";
+import LogoN from "../../assets/karidabookslogoNegative.png";
+import "../../components/constants/fonts.css"
 
 export default function Register() {
-    const { user, login, logout } = useContext(UserContext);
+    const { login } = useContext(UserContext);
     const navigate = useNavigate();
 
     const [dataUser, setDataUser] = useState({
@@ -51,54 +55,65 @@ export default function Register() {
 
     return (
         <div style={{ textAlign: "center", display: "flex", alignItems: "center", height: "100vh", justifyContent: "center", backgroundImage: `url(${BackgroundImageLg})`, backgroundSize: "cover" }}>
-            <div style={{ width: "50%", height: "80vh", backgroundColor: colors.white, borderRadius: 20, alignItems: "center", justifyContent: "center", display: "flex" }}>
-                <div style={{ color: colors.terceary, width: "100%" }}>
-                    <h4 style={{ fontFamily: fontFamily.primary }}>Sign Up free!</h4>
+            <div style={{ width: "50%", height: "90vh", backgroundColor: colors.white, borderRadius: 20, alignItems: "center", justifyContent: "center", display: "flex" }}>
+                <div style={{ color: colors.terceary, width: "100%" }}>         
+                        <Image style={{ width: "40%", marginLeft: "5%", marginBottom: "5%"}} src={LogoN}></Image>
+                    <h4 className="labels" >Sign Up free!</h4>
                     <Form style={{ marginTop: 30, width: "100%" }} onSubmit={handleSubmit}>
                         <div style={{ display: "flex", alignContent: "center", justifyContent: "space-evenly" }}>
                             <div>
-                                <Form.Group className="mb-3">
+                                <Form.Group className="mb-3" id="forms">
                                     <FloatingLabel controlId="floatingFirstName" label="First name">
-                                        <Form.Control name="first_name" type="text" placeholder="..." onChange={handleChange} />
+                                        <Form.Control name="first_name" type="text" placeholder="..." onChange={handleChange} required />
                                     </FloatingLabel>
                                 </Form.Group>
 
-                                <Form.Group className="mb-3">
+                                <Form.Group className="mb-3" id="forms">
                                     <FloatingLabel controlId="floatingMiddleName" label="Middle name">
                                         <Form.Control name="middle_name" type="text" placeholder="Introduzca su apellido paterno" onChange={handleChange} />
                                     </FloatingLabel>
                                 </Form.Group>
 
-                                <Form.Group className="mb-3">
+                                <Form.Group className="mb-3" id="forms">
                                     <FloatingLabel controlId="floatingLastName" label="Last name">
-                                        <Form.Control name="last_name" type="text" placeholder="Introduzca su apellido materno" onChange={handleChange} />
+                                        <Form.Control name="last_name" type="text" placeholder="Introduzca su apellido materno" onChange={handleChange} required />
                                     </FloatingLabel>
                                 </Form.Group>
 
-                                <Form.Group className="mb-3">
+                                <Form.Group className="mb-3" id="forms">
                                     <FloatingLabel controlId="floatingPhoneNumber" label="Phone number">
-                                        <Form.Control name="phone_number" type="number" placeholder="Introduzca su número de teléfono" onChange={handleChange} />
+                                        <Form.Control name="phone_number" type="number" placeholder="Introduzca su número de teléfono" onChange={handleChange} required />
                                     </FloatingLabel>
                                 </Form.Group>
 
-                                <Form.Group className="mb-3">
+                                <Form.Group className="mb-3" id="forms">
                                     <FloatingLabel controlId="floatingEmail" label="E-mail">
-                                        <Form.Control name="email" type="email" placeholder="Introduzca su correo electrónico" onChange={handleChange} />
+                                        <Form.Control name="email" type="email" placeholder="Introduzca su correo electrónico" onChange={handleChange} required />
                                     </FloatingLabel>
                                 </Form.Group>
 
-                                <Form.Group className="mb-3">
+                                <Form.Group className="mb-3" id="forms">
                                     <FloatingLabel controlId="floatingPassword" label="Password">
-                                        <Form.Control name="password" type="password" placeholder="Introduzca su contraseña" onChange={handleChange} />
+                                        <Form.Control name="password" type="password" placeholder="Introduzca su contraseña" onChange={handleChange} required />
                                     </FloatingLabel>
                                 </Form.Group>
                             </div>
                         </div>
 
-                        <Button style={{ backgroundColor: colors.primary, borderColor: colors.primary, marginTop: 20 }} type="submit">
+                        <Button className="butt" style={{ backgroundColor: colors.primary, borderColor: colors.primary, marginTop: 20 }} type="submit">
                             Sign up
                         </Button>
                     </Form>
+                    <Link to={"/login"}>
+                        <Button className="butt" style={{ backgroundColor: colors.primary, borderColor: colors.primary, marginTop: "3%" }}>
+                            Log In
+                        </Button>
+                    </Link>
+                    <Link to={"/"}>
+                        <Button className="butt" style={{ backgroundColor: colors.primary, borderColor: colors.primary, marginTop: "3%", marginLeft: "5%"}}>
+                            Home
+                        </Button>
+                    </Link>
                 </div>
 
             </div>
