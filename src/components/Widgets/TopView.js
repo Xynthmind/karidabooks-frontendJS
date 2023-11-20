@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Image, } from "react-bootstrap";
 import Logo from "../../assets/karidabookslogo.png"
 export default function TopView({Busqueda}) {

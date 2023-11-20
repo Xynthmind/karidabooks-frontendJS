@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../models/UserContext";
 import { KaridaBooksAPI } from "../../components/constants/API";
 //Iconos
-import { BsFillHouseFill, BsFillBookmarksFill, BsFillCartFill, BsFillPersonFill, BsFilePerson, BsPersonVcard } from "react-icons/bs"
+import { BsFillCartFill } from "react-icons/bs"
 import { Button } from "react-bootstrap";
 import { colors } from "../constants/ColorsOfCompany";
 
