@@ -1,7 +1,9 @@
 import React from "react";
 import Slider from "react-slick";
-
-
+import Banner1  from "../../assets/banner1.png";
+import Banner2 from "../../assets/banner2.png";
+import Banner3 from "../../assets/banner3.png";
+ 
 export default function BannerHome() {
     const settings = {
         dots: true,
@@ -16,13 +18,13 @@ export default function BannerHome() {
         <div style={{ maxHeight: "20vh", overflow: "hidden" }}>
             <Slider {...settings}>
                 <div>
-                    <img src="https://images.pexels.com/photos/1106468/pexels-photo-1106468.jpeg" alt="Banner Image 1" style={{ width: '100%' }} />
+                    <img src= {Banner1} alt="Banner Image 1" style={{ width: '100%' }} />
                 </div>
                 <div>
-                    <img src="https://images.pexels.com/photos/18670323/pexels-photo-18670323/free-photo-of-old-books-in-a-library.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Banner Image 2" style={{ width: '100%' }} />
+                    <img src= {Banner2} alt="Banner Image 2" style={{ width: '100%' }} />
                 </div>
                 <div>
-                    <img src="https://images.pexels.com/photos/7643400/pexels-photo-7643400.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Banner Image 3" style={{ width: '100%' }} />
+                    <img src= {Banner3} alt="Banner Image 3" style={{ width: '100%' }} />
                 </div>
             </Slider>
         </div>

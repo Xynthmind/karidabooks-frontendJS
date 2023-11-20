@@ -1,11 +1,13 @@
 import React, { useContext, useState } from "react";
 import { Button, Form, Image, Spinner } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+
 import { KaridaBooksAPI } from "../../components/constants/API";
 import { colors, fontFamily } from "../../components/constants/ColorsOfCompany";
-import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../components/models/UserContext";
 import BackgroundImageLg from "../../assets/modenLibr.jpg";
-import LogoN from "../../assets/karidabookslogoNegative.png"
+import LogoN from "../../assets/karidabookslogoNegative.png";
+import "../../components/constants/fonts.css"
 export default function Login() {
     const { login } = useContext(UserContext);
     const navigate = useNavigate();
@@ -80,30 +82,35 @@ export default function Login() {
 
     return (
         <div style={{ textAlign: "center", display: "flex", alignItems: "center", height: "100vh", justifyContent: "center", backgroundImage: `url(${BackgroundImageLg})`, backgroundSize: "cover" }}>
-            <div style={{ width: "40%", height: "50vh", backgroundColor: colors.white, borderRadius: 20, alignItems: "center", justifyContent: "center", display: "flex" }}>
+            <div style={{ width: "40%", height: "60%", backgroundColor: colors.white, borderRadius: 20, alignItems: "center", justifyContent: "center", display: "flex" }}>
                 <Image style={{ width: "40%", marginRight: 80 }} src={LogoN}></Image>
                 <div style={{ color: colors.terceary }}>
-                    <h4 style={{ fontFamily: fontFamily.primary }}>Welcome to Karida Books!</h4>
+                    <h4 className="labels" >Welcome to Karida Books!</h4>
                     <Form style={{ marginTop: 30 }} onSubmit={handleLogin}>
-                        <Form.Group style={{ marginBottom: 20 }}>
+                        <Form.Group className="labels" id="forms" style={{ marginBottom: 20 }}>
                             <Form.Label>E-mail</Form.Label>
                             <Form.Control type="email" name="email" placeholder="Introduce your e-mail" onChange={handleChange}></Form.Control>
                         </Form.Group>
-                        <Form.Group>
+                        <Form.Group id="forms">
                             <Form.Label>Password</Form.Label>
                             <Form.Control type="password" name="password" placeholder="Introduce your password" onChange={handleChange}></Form.Control>
                         </Form.Group>
                         {showErrorMessage2 && <div style={{ color: "red", marginTop: 8 }}>Both label are requiered. </div>}
                         {showErrorMessage && <div style={{ color: "red", marginTop: 8 }}>E-mail or password is wrong.</div>}
                         {loading && <div style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}><Spinner animation="grow" variant="warning" /></div>}
-                        <Button style={{ backgroundColor: colors.primary, borderColor: colors.primary, marginTop: 20 }} disabled={loading} type="submit">
+                        <Button className="butt" style={{ backgroundColor: colors.primary, borderColor: colors.primary, marginTop: 20 }} disabled={loading} type="submit">
                             Log In
                         </Button>
                     </Form>
                     <div style={{ marginTop: 20 }}>You don't have an account?</div>
                     <Link to={"/register"}>
-                        <Button style={{ backgroundColor: colors.primary, borderColor: colors.primary, marginTop: 5 }} disabled={loading}>
+                        <Button className="butt" style={{ backgroundColor: colors.primary, borderColor: colors.primary, marginTop: "3%" }} disabled={loading}>
                             Sign Up!
+                        </Button>
+                    </Link>
+                    <Link to={"/"}>
+                        <Button className="butt" style={{ backgroundColor: colors.primary, borderColor: colors.primary, marginTop: "3%" ,marginLeft: "5%"}}>
+                            Home
                         </Button>
                     </Link>
                 </div>

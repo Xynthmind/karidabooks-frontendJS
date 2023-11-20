@@ -8,6 +8,7 @@ import NavBarTop from "../../components/Widgets/NavBarTop";
 import BannerHome from "../../components/Widgets/BannerHome";
 import NavBarBot from "../../components/Widgets/NavBarBot";
 import CardBooks from "../../components/Widgets/Card";
+import "../../components/constants/fonts.css"
 export default function Home() {
     const navigate = useNavigate();
     const [books, setBooks] = useState([]);
@@ -36,7 +37,7 @@ export default function Home() {
             <div style={{ backgroundColor: "#ebebeb", height: "100vh" }}>
                 <div style={{ marginLeft: 40, marginRight: 40 }}>
                     <div style={{ display: "flex", alignItems: "center", marginLeft: "43%" }}>
-                        <h1>Our best sellers...</h1>
+                        <h1 className="labels" style={{marginTop: "5%"}}>Our best sellers...</h1>
                     </div>
                     {loading && <div style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}><Spinner animation="grow" variant="warning" /></div>}
                     <div style={{ width: "100%", height: "100%",backgroundColor: "#ebebeb", alignItems: "center", justifyContent: "space-around", padding: 20, display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "20px" }}>
