@@ -15,11 +15,9 @@ export default function Cart() {
     const { cart, user } = useContext(UserContext);
     const [total, setTotal] = useState(0);
     const dateC = new Date(); 
-
     useEffect(()=>{
         totalCost();
     },[]);
-
     const totalCost = () => {
         let aux = 0;
         cart.map((book)=>{
@@ -27,8 +25,6 @@ export default function Cart() {
         })
         setTotal(aux);
     }
-
-
     return (
         <>
             <TopView />
