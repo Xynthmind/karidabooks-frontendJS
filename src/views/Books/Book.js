@@ -17,17 +17,11 @@ export default function Book() {
     const { state } = useLocation();
     const { photo, title, author, description, price, stock } = state?.book;
     const book = state?.book;
-
     const { cart, addCart } = useContext(UserContext);
-
     const [showToast, setShowToast] = useState(false);
-
     const toggleShow = () => {
         setShowToast(!showToast);
     }
-
-    const [compra, setCompra] = useState({});
-
     return (
         <>
             <TopView />
@@ -39,8 +33,8 @@ export default function Book() {
                     <Toast onClose={toggleShow} show={showToast}>
                         <Toast.Header>
                             <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
-                            <strong className="me-auto">Libro insertado</strong>
-                            <small className="text-muted">Justo ahora</small>
+                            <strong className="me-auto">Book inserted</strong>
+                            <small className="text-muted">Just now</small>
                         </Toast.Header>
                         <Toast.Body>The book {book.title} was added to the shopping cart!</Toast.Body>
                     </Toast>

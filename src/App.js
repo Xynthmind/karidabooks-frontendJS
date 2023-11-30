@@ -10,6 +10,8 @@ import Book from './views/Books/Book';
 import BookPerCategory from './views/Books/BookPerCategory';
 import BookSearching from './views/Books/BooksSearching';
 import Cart from './views/Books/Cart';
+import SelectPaymentNAdress from './views/Books/SelectPaymentNAddress';
+import Account from './views/Customer/Account';
 function App() {
   return (
     <UserProvider>
@@ -22,9 +24,11 @@ function App() {
           <Route path="/books/categoryclass" element={<BookPerCategory />} />
           <Route path="/books/searchingmode" element={<BookSearching />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/selectpaymentandaddress" element={<SelectPaymentNAdress />} />
+          <Route path="/account" element={<Account />} />
         </Routes>
       </Router>
     </UserProvider>
   );
-}
+} 
 export default App;

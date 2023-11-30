@@ -19,12 +19,26 @@ export const UserProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
   const addCart = (product) => {
-    setCart([...cart, product]);
-  };
+    const existingBook = cart.find((item) => item.id_book === product.id_book);
+
+    if (!existingBook) {
+        setCart([...cart, { ...product, amount: 1 }]);
+        //console.log("Entré a uno nuevo");
+    } else {
+        const updatedCart = cart.map((item) =>
+            item.id_book === existingBook.id_book
+                ? { ...item, amount: item.amount + 1 }
+                : item
+        );
+        setCart(updatedCart);
+        //console.log("Agregué uno existente");
+    }
+};
 
   const removeCart = (productId) => {
-    const filteredUsers = cart.filter((product) => product.id !== productId);
-    setCart(filteredUsers);
+    console.log(productId)
+    const filteredBooks = cart.filter((product) => product.id_book !== productId);
+    setCart(filteredBooks);
   };
 
 

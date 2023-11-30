@@ -55,7 +55,7 @@ export default function Register() {
 
     return (
         <div style={{ textAlign: "center", display: "flex", alignItems: "center", height: "100vh", justifyContent: "center", backgroundImage: `url(${BackgroundImageLg})`, backgroundSize: "cover" }}>
-            <div style={{ width: "50%", height: "90vh", backgroundColor: colors.white, borderRadius: 20, alignItems: "center", justifyContent: "center", display: "flex" }}>
+            <div style={{ width: "50%", height: "100vh", backgroundColor: colors.white, borderRadius: 20, alignItems: "center", justifyContent: "center", display: "flex" }}>
                 <div style={{ color: colors.terceary, width: "100%" }}>         
                         <Image style={{ width: "40%", marginLeft: "5%", marginBottom: "5%"}} src={LogoN}></Image>
                     <h4 className="labels" >Sign Up free!</h4>
