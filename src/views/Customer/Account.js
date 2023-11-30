@@ -1,22 +1,25 @@
-import React from "react";
-import NavTabMenu from "../../components/Widgets/NavTabMenu";
-import MasterPage from "../../components/Widgets/MasterPage";
+import React, { useContext, useState }  from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button, Image } from "react-bootstrap";
-
+import "../../components/constants/fonts.css"
+import TopView from "../../components/Widgets/TopView";
+import NavBarTop from "../../components/Widgets/NavBarTop";
+import BannerHome from "../../components/Widgets/BannerHome";
+import NavBarBot from "../../components/Widgets/NavBarBot";
 export default function Account() {
     const { state } = useLocation();
     const user = state?.user;
     return (
         <>
-            <MasterPage />
-            <NavTabMenu />
+            <TopView />
+            <NavBarTop />
+            <BannerHome />
+            <NavBarBot />
             <div style={{ width: "100%", display: "flex" }}>
                 <div style={{ width: "50%", height: "60vh", display: "flex", justifyContent: "space-evenly", alignItems: "center", flexDirection: "column" }}>
-                    <div>Nombre de usuario: {user.nombre} </div>
-                    <div>Apellido de usuario: {user.apellido_p} {user.apellido_m}</div>
-                    <div>Correo: {user.email}</div>
-                    <div>Contraseña: ********</div>
+                    <div>First name: {user.first_name} </div>
+                    <div>Last name: {user.last_name}</div>
+                    <div>Email: {user.email}</div>
                     <Link to={"/editarPerfil"} state={{user: user}}>
                         <Button>Editar datos</Button>
                     </Link>
