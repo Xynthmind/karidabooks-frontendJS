@@ -37,7 +37,7 @@ export default function Account() {
                     <Link to={'/cshome'}>
                         <Button className="butt" style={{ backgroundColor: colors.primary, border: colors.primary }} >Customer support</Button>
                     </Link>
-                    <Link to={'/ordenes'}>
+                    <Link to={'/orders'}>
                         <Button className="butt" style={{ backgroundColor: colors.primary, border: colors.primary }} >See orders</Button>
                     </Link>
                 </div>
