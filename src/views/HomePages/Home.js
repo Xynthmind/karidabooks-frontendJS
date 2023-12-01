@@ -24,7 +24,7 @@ export default function Home() {
             })
             .catch((e) => {
                 console.log(e);
-                alert("An unexpected error has occurred. We apologize for the inconvenience.");
+                alert("An unexpected error has occurred. We apologize for the inconvenience, please, return later. The site is under maintenance.");
                 setLoading(false);
             })
     }, []);

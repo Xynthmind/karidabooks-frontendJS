@@ -33,7 +33,6 @@ export default function Login() {
             .then(response => response.json()) 
                 .then(data => {
                     if (data) {
-                        console.log("entro");
                         login(data);
                         routing(data.id_rol)
                         setLoading(false);
@@ -42,9 +41,11 @@ export default function Login() {
                     } else {
                         setShowErrorMesagge(true);
                         setLoading(false);
+                        alert("An unexpected error has occurred. We apologize for the inconvenience, please, return later. The site is under maintenance.");
                     }
                 }).catch(e => {
                     console.log(e);
+                    alert("An unexpected error has occurred. Is possible than you do not have an account..");
                     setLoading(false);
                 });
         }

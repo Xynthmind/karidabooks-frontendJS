@@ -18,7 +18,7 @@ export default function NavBarBotCat() {
                 setCategories(data);
             })
             .catch(error => {
-                console.error(error);
+                alert("An unexpected error with the categories has occurred. We apologize for the inconvenience.");
             });
     }, []);
     return (
