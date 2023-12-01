@@ -15,7 +15,8 @@ import { KaridaBooksAPI } from "../../components/constants/API";
 
 export default function SelectPaymentNAdress() {
 
-    const { user, cart } = useContext(UserContext);
+    const { user } = useContext(UserContext);
+    const { cart, emptyCart } = useContext(UserContext);
     const [loading, setLoading] = useState(false);
     const [showToast, setShowToast] = useState(false);
     const [order, setOrder] = useState({ id_user: "", id_card: "", id_address: "", id_parcel: "1", order_date: "", shipping_date: "", arrive_date: "", total: "", order_status: "In Process", status_c: "1" });
@@ -29,7 +30,7 @@ export default function SelectPaymentNAdress() {
     const navigate = useNavigate();
 
     const handleSubmit = (event) => {
-        console.log("vas bien");
+       // console.log("vas bien");
         event.preventDefault();
         const currentDate = new Date();
         const formattedCurrentDate = currentDate.toISOString().split('T')[0];
@@ -90,6 +91,7 @@ export default function SelectPaymentNAdress() {
         })
             .then(response => {
                 if (response.ok) {
+                    emptyCart();
                     navigate('/');
                 } else {
                     alert("An unexpected error has occurred. We apologize for the inconvenience.");

@@ -41,9 +41,13 @@ export const UserProvider = ({ children }) => {
     setCart(filteredBooks);
   };
 
+  const emptyCart = () => {
+    setCart([]);
+  };
+
 
   return (
-    <UserContext.Provider value={{ user, login, logout, cart, addCart, removeCart, setUser }}>
+    <UserContext.Provider value={{ user, login, logout, cart, addCart, emptyCart, removeCart, setUser }}>
       {children}
     </UserContext.Provider>
   );
