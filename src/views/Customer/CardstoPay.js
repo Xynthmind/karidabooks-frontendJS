@@ -28,7 +28,7 @@ export default function CardstoPay() {
         })
         .catch((e) => {
             console.log(e);
-            alert("An unexpected error has occurred. We apologize for the inconvenience.");
+            alert("An unexpected error trying to obtain your cards has occurred. We apologize for the inconvenience.");
         });
     }
     useEffect(() => {

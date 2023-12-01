@@ -50,6 +50,7 @@ export default function Register() {
             })
             .catch(error => {
                 console.error(error);
+                alert("An unexpected error has occurred. We apologize for the inconvenience, check your data and try again.");
             });
     };
 

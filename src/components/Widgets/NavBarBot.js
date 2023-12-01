@@ -16,7 +16,7 @@ export default function NavBarBot() {
                 setCategories(data);
             })
             .catch(error => {
-                console.error(error);
+                alert("An unexpected error with categories has occurred. We apologize for the inconvenience.");
             });
     }, []);
     return (

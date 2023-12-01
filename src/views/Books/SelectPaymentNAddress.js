@@ -19,18 +19,19 @@ export default function SelectPaymentNAdress() {
     const { cart, emptyCart } = useContext(UserContext);
     const [loading, setLoading] = useState(false);
     const [showToast, setShowToast] = useState(false);
-    const [order, setOrder] = useState({ id_user: "", id_card: "", id_address: "", id_parcel: "1", order_date: "", shipping_date: "", arrive_date: "", total: "", order_status: "In Process", status_c: "1" });
-    const [selectedCard, setCardS] = useState();
-    const [selectedAddress, setAddrS] = useState();
     const [cards, setCards] = useState([]);
     const [addresses, setAddresses] = useState([]);
     const [orderInserted, setOrderIns] = useState([]);
+    const [selectedCard, setCardS] = useState();
+    const [selectedAddress, setAddrS] = useState();
     const { state } = useLocation();
     const total = state?.total;
     const navigate = useNavigate();
+    const [order, setOrder] = useState({ id_user: "", id_card: "", id_address: "", id_parcel: "1", order_date: "", shipping_date: "", arrive_date: "", total: "", order_status: "In Process", status_c: "1" });
+
+
 
     const handleSubmit = (event) => {
-       // console.log("vas bien");
         event.preventDefault();
         const currentDate = new Date();
         const formattedCurrentDate = currentDate.toISOString().split('T')[0];
@@ -64,12 +65,12 @@ export default function SelectPaymentNAdress() {
                     const id = data.id_order;
                     flushBooksIntoDB(id);
                 } else {
-                    alert("An unexpected error has occurred. We apologize for the inconvenience.");
+                    alert("An unexpected error trying to obtain your order data has occurred. We apologize for the inconvenience Try again later..");
                 }
             })
             .catch(error => {
                 setLoading(false);
-                console.error(error);
+                alert("An unexpected error trying to send your order has occurred. We apologize for the inconvenience Try again later..");
             });
     }
     function flushBooksIntoDB(id_ofOrder) {
@@ -94,20 +95,13 @@ export default function SelectPaymentNAdress() {
                     emptyCart();
                     navigate('/');
                 } else {
-                    alert("An unexpected error has occurred. We apologize for the inconvenience.");
+                    alert("An unexpected error trying save your books has occurred. We apologize for the inconvenience.");
                 }
             })
             .catch(error => {
                 setLoading(false);
-                console.error(error);
+                alert("An unexpected error trying save your books has occurred. We apologize for the inconvenience.");
             });
-        /*
-        console.log("El carrito mapeado es");
-        console.log(cart);
-        console.log("Y obtenemos por finalizar:");
-        console.log(orderDetails);
-        console.log(orderDetails.length);
-*/
     }
 
     const toggleShow = () => {
@@ -123,7 +117,7 @@ export default function SelectPaymentNAdress() {
             })
             .catch((e) => {
                 console.log(e);
-                alert("An unexpected error has occurred. We apologize for the inconvenience.");
+                alert("An unexpected error has occurred, we cannot obtain your cards. We apologize for the inconvenience.");
                 setLoading(false);
             })
         fetch(`${KaridaBooksAPI}addresses/user/${user.id_user}`)
@@ -134,7 +128,7 @@ export default function SelectPaymentNAdress() {
             })
             .catch((e) => {
                 console.log(e);
-                alert("An unexpected error has occurred. We apologize for the inconvenience.");
+                alert("An unexpected error has occurred, we cannot obtain your address. We apologize for the inconvenience.");
                 setLoading(false);
             })
 

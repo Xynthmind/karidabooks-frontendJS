@@ -28,7 +28,7 @@ export default function BookPerCategory() {
                 setLoading(false);
             })
             .catch((error) => {
-                console.log(error);
+                alert("An unexpected error getting the books has occurred. We apologize for the inconvenience.");
             });
     }, []);
 

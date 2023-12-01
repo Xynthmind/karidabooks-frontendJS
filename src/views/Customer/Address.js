@@ -27,7 +27,7 @@ export default function Address() {
         })
         .catch((e) => {
             console.log(e);
-            alert("An unexpected error has occurred. We apologize for the inconvenience.");
+            alert("An unexpected error trying to obtain your addresses has occurred. We apologize for the inconvenience.");
         });
     }
     useEffect(() => {
@@ -83,7 +83,7 @@ export default function Address() {
                 setopenM(false);
                 getAlladdresses();
             }else{     
-                alert("Maybe you put something wrong.");
+                alert("Maybe you put something wrong. Try again.");
             }
         })
         .catch(error => {
