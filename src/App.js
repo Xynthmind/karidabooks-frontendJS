@@ -14,6 +14,8 @@ import SelectPaymentNAdress from './views/Books/SelectPaymentNAddress';
 import Account from './views/Customer/Account';
 import CardstoPay from './views/Customer/CardstoPay'
 import Address from './views/Customer/Address'
+import Orders from './views/Customer/Orders';
+import OrderDetails from './views/Customer/OrderDetails'
 function App() {
   return (
     <UserProvider>
@@ -30,6 +32,8 @@ function App() {
           <Route path="/account" element={<Account />} />
           <Route path="/cardstopay" element={<CardstoPay />} />
           <Route path="/address" element={<Address />} />
+          <Route path='/orders' element={<Orders />} />
+          <Route path='/ordersdetails' element={<OrderDetails />} />
         </Routes>
       </Router>
     </UserProvider>
